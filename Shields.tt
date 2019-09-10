@@ -1,0 +1,44 @@
+﻿<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Net.Http" #>
+<#@ import namespace="System.Linq" #>
+
+<#
+var model = new {
+                Badges = new [] {
+                                    new { Property = "AzureArtifactsUnknown", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-unknown-lightgrey.svg"},
+                                    new { Property = "AzureArtifactsIndexGetFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-index_get_failed-red.svg"},
+                                    new { Property = "AzureArtifactsIndexParseFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-index_parse_failed-red.svg"},
+                                    new { Property = "AzureArtifactsIndexSemVerFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-index_semver_failed-red.svg"},
+                                    new { Property = "AzureArtifactsSemVerGetFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-semver_get_failed-red.svg"},
+                                    new { Property = "AzureArtifactsSemVerParseFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-semver_parse__failed-red.svg"},
+                                    new { Property = "AzureArtifactsSemVerFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-index_no_version_found-lightgrey.svg"},
+                                    new { Property = "AzureArtifactsShieldIoGetFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-shields_io_get_failed-lightgrey.svg"},
+                                    new { Property = "AzureArtifactsShieldIoReadFailed", ShieldIoUrl = "https://img.shields.io/badge/azure_artifacts-shields_io_read_failed-lightgrey.svg"}
+                                }
+            };
+#>
+using Microsoft.AspNetCore.Mvc;
+
+namespace AzureArtifactsPublicNuGetFeedBadge
+{
+    public static class Shields
+    {
+        public const string SvgContentType = "image/svg+xml";
+<#
+var client = new System.Net.Http.HttpClient();
+foreach(var badge in model.Badges) {
+
+var shieldData = client.GetByteArrayAsync(badge.ShieldIoUrl).GetAwaiter().GetResult();
+var dataString = string.Join(
+        ", ",
+        shieldData.Select(
+            data=>string.Format("0x{0:x2}", data)
+        )
+    );
+    #>
+        private static readonly byte[] <#=badge.Property#> = { <#=dataString #> };
+        public static FileContentResult <#=badge.Property#>Result { get; } = new FileContentResult(<#=badge.Property#>, SvgContentType);
+<#
+}#>
+    }
+}
