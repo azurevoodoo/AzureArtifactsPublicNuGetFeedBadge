@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/azpkgsshield/azpkgsshield/_apis/build/status/azurevoodoo.AzureArtifactsPublicNuGetFeedBadge?branchName=master)](https://dev.azure.com/azpkgsshield/azpkgsshield/_build/latest?definitionId=1&branchName=master) [![Release Status](https://vsrm.dev.azure.com/azpkgsshield/_apis/public/Release/badge/bf0c50f0-827a-4135-acbd-40b76d5735b6/1/1)](https://dev.azure.com/azpkgsshield/azpkgsshield/_release?_a=releases&view=mine&definitionId=1)
 # Azure Artifacts Public NuGet Feed Badge
 
 An C# Azure Function app to display version badges for NuGet packages hosted on a public Azure Artifacts NuGet Feed.
