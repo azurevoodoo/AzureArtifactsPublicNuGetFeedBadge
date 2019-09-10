@@ -1,0 +1,32 @@
+name: $(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+trigger:
+- master
+
+variables:
+  buildConfiguration: 'Release'
+  artifactName: 'azpkgsshield'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '2.1.802'
+
+- script: dotnet publish --configuration $(BuildConfiguration) --output "$(Build.ArtifactStagingDirectory)/Output" AzureArtifactsPublicNuGetFeedBadge.csproj
+  displayName: .NET Publish $(ArtifactName)
+
+- task: ArchiveFiles@2
+  displayName: Archive Output $(ArtifactName)
+  inputs:
+    rootFolderOrFile: $(Build.ArtifactStagingDirectory)/Output
+    includeRootFolder: false
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(ArtifactName).zip
+
+- task: PublishPipelineArtifact@0
+  displayName: Publish Pipeline Artifact $(ArtifactName)
+  inputs:
+    artifactName: '$(ArtifactName)'
+    targetPath: '$(Build.ArtifactStagingDirectory)/$(ArtifactName).zip'
