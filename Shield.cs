@@ -109,7 +109,7 @@ namespace AzureArtifactsPublicNuGetFeedBadge
 
                 try
                 {
-                    return new FileStreamResult(
+                    return new FileStreamCacheResult(
                         await shieldResponse.Content.ReadAsStreamAsync(),
                         Shields.SvgContentType
                     )
