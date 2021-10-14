@@ -30,7 +30,7 @@ namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
         public Uri LicenseUrl { get; set; }
 
         [JsonProperty("listed")]
-        public bool Listed { get; set; }
+        public bool? Listed { get; set; }
 
         [JsonProperty("minClientVersion")]
         public string MinClientVersion { get; set; }
@@ -42,7 +42,7 @@ namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
         public DateTimeOffset Published { get; set; }
 
         [JsonProperty("requireLicenseAcceptance")]
-        public bool RequireLicenseAcceptance { get; set; }
+        public bool? RequireLicenseAcceptance { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
