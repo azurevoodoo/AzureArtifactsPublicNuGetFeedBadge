@@ -11,9 +11,10 @@ pool:
 
 steps:
 - task: UseDotNet@2
+  displayName: 'Use .NET Core SDK'
   inputs:
-    packageType: 'sdk'
-    version: '2.1.802'
+    packageType: sdk
+    useGlobalJson: true
 
 - script: dotnet publish --configuration $(BuildConfiguration) --output "$(Build.ArtifactStagingDirectory)/Output" AzureArtifactsPublicNuGetFeedBadge.csproj
   displayName: .NET Publish $(ArtifactName)
