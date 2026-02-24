@@ -1,18 +1,19 @@
-﻿using System;
-using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
+public class NuGetPackageRegistration
 {
-    public class NuGetPackageRegistration
-    {
-        [JsonProperty("@id")] public Uri Id { get; set; }
+    [JsonPropertyName("@id")]
+    public Uri? Id { get; set; }
 
-        [JsonProperty("@type")] public string[] Type { get; set; }
+    [JsonPropertyName("@type")]
+    public string[]? Type { get; set; }
 
-        [JsonProperty("count")] public long Count { get; set; }
+    [JsonPropertyName("count")]
+    public long? Count { get; set; }
 
-        [JsonProperty("items")] public NuGetPackageRegistrationItem[] Items { get; set; }
+    [JsonPropertyName("items")]
+    public NuGetPackageRegistrationItem[] Items { get; set; } = [];
 
-        [JsonProperty("@context")] public Context Context { get; set; }
-    }
+    [JsonPropertyName("@context")]
+    public Context? Context { get; set; }
 }

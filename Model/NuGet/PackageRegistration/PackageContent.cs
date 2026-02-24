@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
+public class PackageContent
 {
-    public class PackageContent
-    {
-        [JsonProperty("@type")]
-        public string Type { get; set; }
-    }
+    [JsonPropertyName("@type")]
+    public string? Type { get; set; }
 }

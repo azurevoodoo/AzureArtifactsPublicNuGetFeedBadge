@@ -1,17 +1,16 @@
-﻿using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.Index;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.Index
+public class Resource
 {
-    public class Resource
-    {
-        [JsonProperty("@id")] public string Id { get; set; }
+    [JsonPropertyName("@id")]
+    public string? Id { get; set; }
 
-        [JsonProperty("@type")] public string Type { get; set; }
+    [JsonPropertyName("@type")]
+    public string? Type { get; set; }
 
-        [JsonProperty("comment", NullValueHandling = NullValueHandling.Ignore)]
-        public string Comment { get; set; }
+    [JsonPropertyName("comment")]
+    public string? Comment { get; set; }
 
-        [JsonProperty("clientVersion", NullValueHandling = NullValueHandling.Ignore)]
-        public string ClientVersion { get; set; }
-    }
+    [JsonPropertyName("clientVersion")]
+    public string? ClientVersion { get; set; }
 }

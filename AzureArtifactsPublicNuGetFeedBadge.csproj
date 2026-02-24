@@ -1,12 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AzureFunctionsVersion>V3</AzureFunctionsVersion>
+    <TargetFramework>net10.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-	<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
-	<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.20" />
-	<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
+    <Using Include="AzureArtifactsPublicNuGetFeedBadge.Helpers" />
+    <Using Include="AzureArtifactsPublicNuGetFeedBadge.Model" />
+    <Using Include="AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.Index" />
+    <Using Include="AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration" />
+    <Using Include="System.Text.Json" />
+    <Using Include="System.Text.Json.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.51.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.7" OutputItemType="Analyzer" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -20,9 +32,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Shields.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Shields.cs">

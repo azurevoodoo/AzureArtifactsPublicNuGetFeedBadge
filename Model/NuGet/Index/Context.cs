@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.Index;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.Index
+public class Context
 {
-    public class Context
-    {
-        [JsonProperty("@vocab")] public Uri Vocab { get; set; }
+    [JsonPropertyName("@vocab")]
+    public Uri? Vocab { get; set; }
 
-        [JsonProperty("comment")] public Uri Comment { get; set; }
-    }
+    [JsonPropertyName("comment")]
+    public Uri? Comment { get; set; }
 }
