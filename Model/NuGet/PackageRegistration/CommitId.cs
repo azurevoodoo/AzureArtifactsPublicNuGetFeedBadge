@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
+public class CommitId
 {
-    public class CommitId
-    {
-        [JsonProperty("@id")]
-        public string Id { get; set; }
-    }
+    [JsonPropertyName("@id")]
+    public string? Id { get; set; }
 }

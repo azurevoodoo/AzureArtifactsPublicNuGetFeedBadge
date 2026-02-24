@@ -19,26 +19,25 @@ var model = new {
 #>
 using Microsoft.AspNetCore.Mvc;
 
-namespace AzureArtifactsPublicNuGetFeedBadge
+namespace AzureArtifactsPublicNuGetFeedBadge;
+
+public static class Shields
 {
-    public static class Shields
-    {
-        public const string SvgContentType = "image/svg+xml";
+    public const string SvgContentType = "image/svg+xml";
 <#
 var client = new System.Net.Http.HttpClient();
 foreach(var badge in model.Badges) {
 
 var shieldData = client.GetByteArrayAsync(badge.ShieldIoUrl).GetAwaiter().GetResult();
 var dataString = string.Join(
-        ", ",
-        shieldData.Select(
-            data=>string.Format("0x{0:x2}", data)
-        )
-    );
-    #>
-        private static readonly byte[] <#=badge.Property#> = { <#=dataString #> };
-        public static FileContentResult <#=badge.Property#>Result { get; } = new FileContentResult(<#=badge.Property#>, SvgContentType);
+    ", ",
+    shieldData.Select(
+        data=>string.Format("0x{0:x2}", data)
+    )
+);
+#>
+    private static readonly byte[] <#=badge.Property#> = { <#=dataString #> };
+    public static FileContentResult <#=badge.Property#>Result { get; } = new FileContentResult(<#=badge.Property#>, SvgContentType);
 <#
 }#>
-    }
 }

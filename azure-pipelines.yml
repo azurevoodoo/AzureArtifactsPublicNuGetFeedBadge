@@ -11,7 +11,7 @@ pool:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET Core SDK'
+  displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
     useGlobalJson: true

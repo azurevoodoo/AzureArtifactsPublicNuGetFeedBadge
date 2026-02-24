@@ -1,59 +1,55 @@
-﻿using System;
-using Newtonsoft.Json;
+namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration;
 
-namespace AzureArtifactsPublicNuGetFeedBadge.Model.NuGet.PackageRegistration
+public class CatalogEntry
 {
-    public class CatalogEntry
-    {
-        [JsonProperty("@id")]
-        public Uri Id { get; set; }
+    [JsonPropertyName("@id")]
+    public Uri? Id { get; init; }
 
-        [JsonProperty("@type")]
-        public string Type { get; set; }
+    [JsonPropertyName("@type")]
+    public string? Type { get; init; }
 
-        [JsonProperty("authors")]
-        public string Authors { get; set; }
+    [JsonPropertyName("authors")]
+    public string? Authors { get; init; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
+    [JsonPropertyName("description")]
+    public string? Description { get; init; }
 
-        [JsonProperty("iconUrl")]
-        public Uri IconUrl { get; set; }
+    [JsonPropertyName("iconUrl")]
+    public Uri? IconUrl { get; init; }
 
-        [JsonProperty("id")]
-        public string CatalogEntryId { get; set; }
+    [JsonPropertyName("id")]
+    public string? CatalogEntryId { get; init; }
 
-        [JsonProperty("language")]
-        public string Language { get; set; }
+    [JsonPropertyName("language")]
+    public string? Language { get; init; }
 
-        [JsonProperty("licenseUrl")]
-        public Uri LicenseUrl { get; set; }
+    [JsonPropertyName("licenseUrl")]
+    public Uri? LicenseUrl { get; init; }
 
-        [JsonProperty("listed")]
-        public bool? Listed { get; set; }
+    [JsonPropertyName("listed")]
+    public bool? Listed { get; init; }
 
-        [JsonProperty("minClientVersion")]
-        public string MinClientVersion { get; set; }
+    [JsonPropertyName("minClientVersion")]
+    public string? MinClientVersion { get; init; }
 
-        [JsonProperty("projectUrl")]
-        public Uri ProjectUrl { get; set; }
+    [JsonPropertyName("projectUrl")]
+    public Uri? ProjectUrl { get; init; }
 
-        [JsonProperty("published")]
-        public DateTimeOffset Published { get; set; }
+    [JsonPropertyName("published")]
+    public DateTimeOffset? Published { get; init; }
 
-        [JsonProperty("requireLicenseAcceptance")]
-        public bool? RequireLicenseAcceptance { get; set; }
+    [JsonPropertyName("requireLicenseAcceptance")]
+    public bool? RequireLicenseAcceptance { get; init; }
 
-        [JsonProperty("summary")]
-        public string Summary { get; set; }
+    [JsonPropertyName("summary")]
+    public string? Summary { get; init; }
 
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
+    [JsonPropertyName("tags")]
+    public string[] Tags { get; init; } = [];
 
-        [JsonProperty("title")]
-        public string Title { get; set; }
+    [JsonPropertyName("title")]
+    public string? Title { get; init; }
 
-        [JsonProperty("version")]
-        public string Version { get; set; }
-    }
+    [JsonPropertyName("version")]
+    public string? Version { get; init; }
 }
